@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="224ed8bd-3cac-465a-b23a-9f9f5b4432f7" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="sample-payment1Flow" doc:id="4dbdc366-7878-40fb-8ab7-26dd317707af" >
+		<http:listener doc:name="Listener" doc:id="05742db8-0d07-4aa6-b30f-b0f5605030a5" config-ref="HTTP_Listener_config" path="/sample-payment"/>
+		<logger level="INFO" doc:name="Logger" doc:id="1fd62835-cafa-4e07-9cb2-e11caa2f4bf2" message="#[payload]"/>
+	</flow>
+</mule>
